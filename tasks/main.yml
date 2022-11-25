@@ -1,2 +1,16 @@
 ---
 # tasks file for ansible-role-file-transmitter
+
+- name: Copy file with owner and permissions
+
+  ansible.builtin.copy:
+    src: "{{ item.name }}"
+    #dest: '{{ cp_dest_path }}''{{ item.name }}'
+    dest: "{{ cp_dest_path }}"
+    owner: root
+    group: root
+    mode: '0644'
+    
+    
+  loop: "{{ cp_files }}"
+  
